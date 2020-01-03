@@ -32,7 +32,7 @@ namespace UserSignup.Controllers
             {
                 return View("Add");
             }
-            else if (user.Password != verify)
+            else if (user.Password.Equals(verify))
             {
                 ViewBag.verifyError = "Those passwords don't match!";
                 return View("Add");
