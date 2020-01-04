@@ -6,38 +6,47 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UserSignup.Models;
+using UserSignup.ViewModels;
 
 namespace UserSignup.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index(User user)
+        public IActionResult Index(string username = "User")
         {
-            ViewBag.user = user;
+            ViewBag.username = username;
             return View();
         }
 
         public IActionResult Add()
         {
-            return View();
+            AddUserViewModel addUserViewModel = new AddUserViewModel();
+            return View(addUserViewModel);
         }
 
         [HttpPost]
-        public IActionResult Add(User user, string verify)
+        [Route("/User/Add")]
+        public IActionResult Add(AddUserViewModel addUserViewModel)
         {
-            ViewBag.user = user;
-            if (user.Username == null
-                || user.Email == null
-                || user.Password == null)
+
+            if (ModelState.IsValid)
             {
-                return View("Add");
+                return View("Index", addUserViewModel);
             }
-            else if (user.Password.Equals(verify))
-            {
-                ViewBag.verifyError = "Those passwords don't match!";
-                return View("Add");
-            }
-            return View("Index", user);
+
+            //// not used for strings -- user.Password == verify
+            //if (user != null && user.Password.Equals(verify))
+            //{
+            //    return Redirect($"Index?username={user.Username}");
+            //}
+
+            //if (user != null)
+            //{
+            //    ViewBag.username = user.Username;
+            //    ViewBag.email = user.Email;
+            //}
+
+            return View(addUserViewModel);
         }
     }
 }
