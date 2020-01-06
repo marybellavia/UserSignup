@@ -9,13 +9,12 @@ namespace UserSignup.ViewModels
         [Required(ErrorMessage = "You must input a username")]
         public string Username { get; set; }
 
-        [DataType(DataType.EmailAddress)]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "You must input a password 6 character or longer.")]
         [DataType(DataType.Password)]
-        [StringLength(6, ErrorMessage = "You must input a password 6 character or longer.")]
         public string Password { get; set; }
 
         [Required]
@@ -27,6 +26,5 @@ namespace UserSignup.ViewModels
         public AddUserViewModel()
         {
         }
-
     }
 }

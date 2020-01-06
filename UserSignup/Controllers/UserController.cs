@@ -12,10 +12,16 @@ namespace UserSignup.Controllers
 {
     public class UserController : Controller
     {
-        public IActionResult Index(string username = "User")
+        public IActionResult Index()
         {
-            ViewBag.username = username;
-            return View();
+            AddUserViewModel emptyuser = new AddUserViewModel()
+            {
+                Username = "No User",
+                Email = null,
+                Password = "password",
+                Verify = "password"
+            };
+            return View(emptyuser);
         }
 
         public IActionResult Add()

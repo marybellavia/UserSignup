@@ -1,3 +1,11 @@
 ﻿@model UserSignup.ViewModels.AddUserViewModel
 
-<h1>Hello, @Model.Username!</h1>
+@if (Model.Username.Equals("No User"))
+{
+    <h1>Please create a username!</h1>
+}
+
+@if (Model.Username != "No User")
+{
+    <h1>Hello, @Model.Username!</h1>
+}

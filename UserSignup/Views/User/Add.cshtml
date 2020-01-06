@@ -4,24 +4,24 @@
     <form asp-controller="User" asp-action="Add" method="post">
     <table>
         <tr>
-            <td><label for="username">Username: </label></td>
-            <td><input type="text" name="username" value="@Model.Username"/></td>
+            <td><label asp-for="Username">Username: </label></td>
+            <td><input type="text" asp-for="Username" value="@Model.Username"/></td>
             <td><span asp-validation-for="Username"></span></td>
 
         </tr>
         <tr>
-            <td><label for="email">Email: </label></td>
-            <td><input type="text" name="email" value="@Model.Email"/></td>
+            <td><label asp-for="Email">Email: </label></td>
+            <td><input type="text" asp-for="Email" value="@Model.Email"/></td>
             <td><span asp-validation-for="Email"></span></td>
         </tr>
         <tr>
-            <td><label for="password">Password: </label></td>
-            <td><input type="password" name="password"/></td>
+            <td><label asp-for="Password">Password: </label></td>
+            <td><input type="password" asp-for="Password"/></td>
             <td><span asp-validation-for="Password"></span></td>
         </tr>
         <tr>
-            <td><label for="verify">Verify Password: </label></td>
-            <td><input type="password" name="verify"/></td>
+            <td><label asp-for="Verify">Verify Password: </label></td>
+            <td><input type="password" asp-for="Verify"/></td>
             <td><span asp-validation-for="Verify"></span></td>
         </tr>
         <tr>
